@@ -4,7 +4,7 @@
   programs.git = {
     enable = true;
 
-    setting = {
+    config = {
       init.defaultBranch = "main";
     };
   };

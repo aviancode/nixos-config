@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = [
+  environment.systemPackages = [
     pkgs.alacritty
   ];
 

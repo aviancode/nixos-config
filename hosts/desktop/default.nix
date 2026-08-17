@@ -6,18 +6,32 @@
     ./filesystems.nix
 
     # Modules
-    ../../modules/system/git.nix          # Git
-    ../../modules/system/fonts.nix        # Fonts
+    ../../modules/system/git.nix             # Git
+    ../../modules/system/fonts.nix           # Fonts
+    ../../modules/system/greetd.nix          # Login manager
+    ../../modules/system/nvidia.nix          # Nvidia drivers
+    ../../modules/system/mihomo/mihomo.nix   # Proxy cli
+    ../../modules/system/zsh.nix             # Shell
+    ../../modules/system/starship.nix        # Prompt
+    ../../modules/system/network-manager.nix # Networking
+    ../../modules/system/xwayland.nix        # X-server
+    ../../modules/system/xwayland-satellite.nix  # X-server satellite
+    ../../modules/system/bluetooth.nix       # Bluetooth
+    ../../modules/system/fastfetch.nix       # Fetch
 
-    ../../modules/desktop/niri.nix        # Wayland compositer
-    ../../modules/desktop/waybar.nix      # Bar
-    ../../modules/desktop/rofi.nix        # Launcher
-    ../../modules/desktop/mako.nix        # Notify
-    ../../modules/desktop/awww.nix        # Wallpaper
-    ../../modules/desktop/hyprlock.nix    # Lock screen
-    ../../modules/desktop/alacritty.nix   # Terminal emulator
-
+    ../../modules/desktop/discord.nix        # Discord
+    ../../modules/desktop/niri.nix           # Wayland compositer
+    ../../modules/desktop/rofi.nix           # Launcher
+    ../../modules/desktop/hyprlock.nix       # Lock screen
+    ../../modules/desktop/alacritty.nix      # Terminal emulator
+    ../../modules/desktop/yazi.nix           # File manager
+  
+    ../../modules/programs/steam.nix         # Steam client
+    ../../modules/programs/keepassxc.nix     # Pswd manager
   ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -33,7 +47,7 @@
       "video"
       "docker"
       ];
-    shell = pkgs.bashInteractive;
+    shell = pkgs.zsh;
   };
 
   home-manager = {

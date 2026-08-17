@@ -13,6 +13,29 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+	url = "github:sodiboo/niri-flake";
+	inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    zen-browser = {
+	url = "github:0xc000022070/zen-browser-flake";
+	inputs = {
+		nixpkgs.follows = "nixpkgs";
+		home-manager.follows = "home-manager";
+	};
+    };
+
+    zapret2 = {
+	url = "github:bol-van/zapret2";
+	flake = false;
+    };
   };
 
   outputs = inputs@{ nixpkgs, ... }: let

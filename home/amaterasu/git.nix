@@ -5,7 +5,7 @@
     userName = "amaterasu";
     userEmail = "buttonbablo@protonmail.com";
 
-    setting = {
+    settings = {
       init.defaultBranch = "main";
     };
   };

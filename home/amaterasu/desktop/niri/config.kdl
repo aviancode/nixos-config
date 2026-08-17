@@ -1,0 +1,79 @@
+input {
+	keyboard {
+		xkb {
+			layout "us,ru"
+			options "grp:alt_shift_toggle"
+		}
+	}
+}
+
+spawn-at-startup "waybar"
+spawn-at-startup "xwayland-satellite"
+
+output "DP-1" {
+	mode "1920x1080@144.002"
+	transform "90"
+	position x=-1080 y=-480
+}
+
+output "DP-2" {
+	mode "2560x1440@240.002"
+	position x=0 y=0
+}
+
+prefer-no-csd true;
+
+window-rule {
+	clip-to-geometry true
+}
+
+layer-rule {
+	match namespace="^waybar$"
+
+	geometry-corner-radius 10
+}
+
+binds {
+	Mod+Shift+Slash repeat=false { show-hotkey-overlay; }
+
+	Mod+T repeat=false hotkey-overlay-title="Open Terminal" { spawn "alacritty"; }
+	Mod+L repeat=false hotkey-overlay-title="Lock Screen"   { spawn "hyprlock"; }
+
+	Mod+K repeat=false hotkey-overlay-title="Pswd manager"  { spawn "keepassxc"; }
+	Mod+B repeat=false hotkey-overlay-title="Open Browser"  { spawn "zen-beta"; }
+
+	Mod+D { close-window; }
+
+	Mod+Left  { focus-column-left; }
+	Mod+Down  { focus-window-down; }
+	Mod+Up    { focus-window-up; }
+	Mod+Right { focus-column-right; }
+
+	Mod+1 { focus-workspace 1; }
+	Mod+2 { focus-workspace 2; }
+	Mod+3 { focus-workspace 3; }
+	Mod+4 { focus-workspace 4; }
+	Mod+5 { focus-workspace 5; }
+	Mod+6 { focus-workspace 6; }
+	Mod+7 { focus-workspace 7; }
+	Mod+8 { focus-workspace 8; }
+	Mod+9 { focus-workspace 9; }
+	Mod+Ctrl+1 { move-window-to-workspace 1; }
+
+	Mod+BracketLeft            { consume-or-expel-window-left; }
+	Mod+BracketRight           { consume-or-expel-window-right; }
+	Super+Alt+Ctrl+Shift+Left  { consume-or-expel-window-left; }
+	Super+Alt+Ctrl+Shift+Right { consume-or-expel-window-right; }
+
+	Mod+Comma   { consume-window-into-column; }
+	Mod+Period  { expel-window-from-column; }
+
+	Mod+E       { switch-preset-column-width; }
+	Mod+Shift+E { switch-preset-window-height; }
+	Mod+Ctrl+E  { reset-window-height; }
+	Mod+F       { maximize-column; }
+
+	Mod+Space {
+		spawn "rofi" "-show" "drun"
+	}
+}
